@@ -8,18 +8,7 @@ Crop disease threatens agricultural sustainability worldwide. Developing actiona
 The repository hosts 
 projects and ideas from the __Software-Defined Farm Working Group__, where the focus is building computing systems that complement the work of farmers, both small and industrial, in their quest to be profitable while maximizing sustainability efforts.
 
-#### Data Documentation and Test Data Repo
-
-Test data and miscellaneous documents related to data are kept in [another repository]( https://github.coecis.cornell.edu/beb82/CIDATestData). Test suites run in this codebase should
-make reference to a specific commit in the test data repo, to avoid surprises.
-Note: we may want to consider using
-a BitBucket as an alternative host so we can pull [specific commits from there](https://serverfault.com/questions/117255/git-pull-specific-revision-from-remote-repository); this
-could be useful as the history of rapidly changing datasets may become quite large taken in
-total.
-
-
 #### Dealing with line endings on different systems
-
 
 A good rule of thumb if you experience issues:
 
@@ -30,17 +19,6 @@ git config --local core.autocrlf true
 ```
 
 (Optionally replace `--local` with `--global` to make this the default for all of your repositories.)
-
-#### Enabling repository githooks
-
-The githooks are mainly used for safety checks and for bookkeeping, so that problems don't
-pop up. Generally the won't run tests, which should be done as a practice and at the CI level.
-Each local checkout of a repository should enable githooks by doing:
-
-```
-git config --local core.hooksPath .githooks/
-
-```
 
 ### Questions?
 Please contact _*fer26@cornell.edu*_
