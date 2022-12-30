@@ -1,12 +1,11 @@
 # System packages
-from concurrent.futures import ThreadPoolExecutor
 from json import loads
 from time import sleep
 
 
 # Local packages
 from sdf.utils.user_input import parse_main_args, create_request
-from sdf.eval.eurosys.edgecloud.utils.timer import Timer
+from sdf.eval.utils.timer import Timer
 from sdf.farmbios.dispatcher import Dispatcher
 from sdf.farmbios.compute_handler import ComputeRPCHandler
 from sdf.helper_typedefs import Modules as mod
@@ -83,45 +82,8 @@ if __name__ == "__main__":
     # Set the dispacher's network manager.
     dispatcher.set_network_manager(net_ctrl.net_mgr)
 
-    # A pool of threads to be used for file and message checks. 
-    pool = ThreadPoolExecutor(1)
-
-    # Run a thread whose job is to check for new messages.
-    spin_thread_future = pool.submit(net_ctrl.spin_server_forever)
-    spin_thread_future.add_done_callback(net_ctrl.check_on_threads)
-
     # Sleep a bit before starting analytics
     sleep(TEN_SECONDS)
     
-    # Give the WineGuard trainer module access to the dispatcher
-    # to run the experiment
-    trainer_module.set_dispatcher(dispatcher)
-    run_experiments(1, trainer_module)
-    
-    #trainer_module.analytics()
-
-    # Take user requests.
-    while True:
-        request = create_request()
-        if request[0] == "add_server":
-            remote_host = request[1]
-            remote_port = int(request[2])
-            conn = net_ctrl.client.connect_to_peer(remote_host,
-                                                   remote_port)
-            if conn != comstatus.SOCKET_ERROR:
-                net_ctrl.net_mgr.add_connection(conn, port=remote_port,
-                                                outgoing=True)
-                net_ctrl.net_mgr.add_remote_peer(tuple([remote_host,
-                                                       remote_port]))
-            else:
-                 print("Connection to (%s, %s) failed...\n" % (remote_host,
-                                                              remote_port))
-        else: # Exit
-            print("Received a signal to exit, releasing resources\n")
-            net_ctrl.exit_signal = True
-            handlers[mod.COMPUTE].module.exit_signal = True
-            break 
-
-    # Wait on all the threads to exit
-    pool.shutdown(wait=True)
-
+    # Run the trainer module
+    trainer_module.run(dispatcher)
