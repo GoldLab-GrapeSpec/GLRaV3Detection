@@ -1,1 +1,12 @@
+# Ignore the old requirements that were common to all projects.
+# The requirements are now customized for each project's dockerfile/reqs file.
+SoftwareDefinedFarm/reqs.txt
+
+# Ignore caches that are generated as files are executed
+*__pycache__/
+
+# Ignore jupyter-notebook checkpoint files
+*.ipynb_checkpoints
+
+# Ignoring json files to avoid uploading config credentials on accident.
 *.json
