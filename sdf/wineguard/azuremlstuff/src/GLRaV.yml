@@ -1,4 +1,4 @@
-name: pipelinedev
+name: GLRaV
 channels:
   - conda-forge
   - defaults
