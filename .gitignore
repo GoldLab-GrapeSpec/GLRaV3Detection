@@ -5,5 +5,9 @@ SoftwareDefinedFarm/reqs.txt
 # Ignore caches that are generated as files are executed
 *__pycache__/
 
+# Ignore jupyternotebooks and jupyter-notebook checkpoints
+*.ipynb
+*.ipynb_checkpoints
+
 # Ignoring json files to avoid uploading config credentials on accident.
 *.json
