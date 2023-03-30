@@ -1,8 +1,49 @@
 # Grapevine Leafroll associated Virus Complex-3 (GLRaV-3) detection with AVIRIS-NG imagery
-A repository for one of the projects related to the Cornell Institute for Digital Agriculture
+A repository for one of the projects associated with the Cornell Institute for Digital Agriculture
 
 ### Abstract
-Crop disease threatens agricultural sustainability worldwide. Developing actionable early detection and warning systems for agricultural stakeholders, such as growers and field managers, is crucial to reduce the negative financial and environmental impacts of crop disease, whose losses currently exceed $200B USD annually. Agricultural stakeholders primarily rely on visual scouting and molecular testing reports to identify disease, however these practices are challenging to scale from both a financial and labor perspective. Spectroscopic imagery (SI) can improve crop disease management by offering decision-makers accurate disease maps derived from scalable Machine Learning (ML) models. However, training and deploying ML models on SI requires significant computation and storage capabilities, which limits stakeholder use. This challenge will only become greater as high-resolution, global scale data from forthcoming satellite systems such as Surface Biology & Geology (SBG) becomes available. Here, we present a simple, rapid, reliable, cloud-hosted architecture to streamline crop disease detection with SI from NASA's Airborne Visible/Infrared Imaging Spectrometer Next Generation (AVIRIS-NG) and grapevine leafroll associated virus complex 3 (GLRaV-3) in wine grape as a model system. The software system was designed with three goals in mind. First, we showcase new techniques for processing and refining spectroscopic imagery to produce disease incidence models. Second, we demonstrate a cloud-based disease detection system whose underlying principles allow it to flexibly accommodate model improvements and shifting data modalities. The third goal of our work is to make the insights derived from SI available to agricultural stakeholders via a platform designed with their needs and values (e.g. data privacy) in mind. To this end, we illustrate the efficacy of ML models developed for GLRaV-3 detection in a cloud-native environment that does not retain potentially proprietary stakeholder data (e.g. exact field locations) within it. The key outcome of this work is an innovative, responsive system foundation that can empower agricultural stakeholders to make data-driven disease management decisions with SI, while serving as a framework for others pursuing use-inspired application development for agriculture to follow that ensures social impact and reproducibility while preserving stakeholder privacy.
+Crop disease threatens agricultural sustainability worldwide. Developing
+actionable early detection and warning systems for agricultural stakeholders,
+such as growers and field managers, is crucial to reduce the negative financial
+and environmental impacts of crop disease, whose losses currently exceed $200B USD
+annually. Agricultural stakeholders primarily rely on visual scouting and
+molecular testing reports to identify disease, however these practices are
+challenging to scale from both a financial and labor perspective. Spectroscopic
+imagery (SI) can improve crop disease management by offering decision-makers
+accurate disease maps derived from scalable Machine Learning (ML) models.
+However, training and deploying ML models on SI requires significant computation
+and storage capabilities, which limits stakeholder use. This challenge will only
+become greater as high-resolution, global scale data from forthcoming satellite
+systems such as Surface Biology & Geology (SBG) becomes available. Here, we present
+a simple, rapid, reliable, cloud-hosted architecture to streamline crop disease
+detection with SI from NASA's Airborne Visible/Infrared Imaging Spectrometer Next
+Generation (AVIRIS-NG) and grapevine leafroll associated virus complex 3 (GLRaV-3)
+in wine grape as a model system. The software system was designed with three
+goals in mind. First, we showcase new techniques for processing and refining
+spectroscopic imagery to produce disease incidence models. Second, we demonstrate
+a cloud-based disease detection system whose underlying principles allow it to
+flexibly accommodate model improvements and shifting data modalities. The third
+goal of our work is to make the insights derived from SI available to agricultural
+stakeholders via a platform designed with their needs and values (e.g., data privacy)
+in mind. To this end, we illustrate the efficacy of ML models developed for
+GLRaV-3 detection in a cloud-native environment that does not retain potentially
+proprietary stakeholder data (e.g. exact field locations) within it. The key
+outcome of this work is an innovative, responsive system foundation that can empower
+agricultural stakeholders to make data-driven disease management decisions with SI,
+while serving as a framework for others pursuing use-inspired application development
+for agriculture to follow that ensures social impact and reproducibility while
+preserving stakeholder privacy.
+
+### How to Run the code
+Detailed instructions on how to run the classification pipeline can be found [here](https://www.usenix.org/conference/atc23/call-for-papers).
+A few caveats about the code:
+
+- Registering/downloading the model requires access to an Azure ML Workspace account,
+  but we provide an initial version of the model as a pickled file
+  [here](https://github.com/GoldLab-GrapeSpec/GLRaV3Detection/blob/master/sdf/wineguard/azuremlstuff/src/RFm_smr_H_SyAsy.pk).
+- The code is part of a larger project called the [Software-Defined Farm or SDF](https://github.com/Cornell-CIDA-Dev/Software-Defined-Farm),
+  hence the sdf python packaging above. This is necessary to run the code for
+  registering models and submitting model training experiments the cloud.
 
 #### Dealing with line endings on different systems
 
